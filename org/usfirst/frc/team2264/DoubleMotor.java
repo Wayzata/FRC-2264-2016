@@ -15,10 +15,11 @@ public class DoubleMotor implements SpeedController {
 		this.rear = rear;
 	
 	}
-
+	//Writes the same output from both front and rear motors.
 	@Override
 	public void pidWrite(double output) {
-		this.pidWrite(get());	
+		this.front.pidWrite(output);
+		this.rear.pidWrite(output);
 	}
 
 	@Override
@@ -26,11 +27,11 @@ public class DoubleMotor implements SpeedController {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	//Sets motors at the same speed and gives them the same syncGroup.
 	@Override
 	public void set(double speed, byte syncGroup) {
-		// TODO Auto-generated method stub
-		
+		this.front.set(speed, syncGroup);
+		this.rear.set(speed, syncGroup);
 
 	}
 
