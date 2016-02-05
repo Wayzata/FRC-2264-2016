@@ -1,7 +1,10 @@
-package org.usfirst.frc.team2264;
+package org.usfirst.frc.team2264.robot.subsystems;
 
 import edu.wpi.first.wpilibj.CANTalon;
 
+/**
+ * @author Drake and Kushal :(
+ */
 public class Winch {
 	CANTalon winder;
 	long startTime;

@@ -1,26 +1,24 @@
 package org.usfirst.frc.team2264.robot;
 
-import org.usfirst.frc.team2264.Winch;
+import org.usfirst.frc.team2264.robot.util.DoubleMotor;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
 
 public class Robot extends IterativeRobot {
 	private Joystick joystick;
-	private Winch winch;
+	private RobotDrive drive;
 	
     public void robotInit() {
     	this.joystick = new Joystick(0);
-    	this.winch = new Winch(new CANTalon(18));
+    	this.drive = new RobotDrive(
+    		new DoubleMotor(new CANTalon(19), new CANTalon(18)),
+    		new DoubleMotor(new CANTalon(20), new CANTalon(17))
+    	);
     }
     public void teleopPeriodic() {
-    	int pov = this.joystick.getPOV();
-    	if(pov == 0)
-    		this.winch.startWinding(1.0);
-    	else if(pov == 180)
-    		this.winch.startUnwinding(1.0);
-    	else this.winch.stopWinding();
-    	this.winch.Update();
+    	this.drive.arcadeDrive(this.joystick);
     }
 }
