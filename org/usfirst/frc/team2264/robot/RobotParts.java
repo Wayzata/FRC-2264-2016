@@ -9,5 +9,8 @@ public class RobotParts {
 		public static final int SLIDE = 26;
 		
 	}
-	
+	public static class SWITCHES {
+		public static final int EXETEND = 0;
+		public static final int RETRACT = 1;
+	}
 }
