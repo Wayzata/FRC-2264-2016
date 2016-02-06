@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DoubleMotor implements SpeedController {
 	CANTalon front;
 	CANTalon rear;
-	
+	//
 	public DoubleMotor(CANTalon front, CANTalon rear) {		
 		this.front = front;
 		this.rear = rear;

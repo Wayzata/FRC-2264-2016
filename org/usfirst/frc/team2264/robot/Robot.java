@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2264.robot;
 
+import org.usfirst.frc.team2264.robot.subsystems.Control;
 import org.usfirst.frc.team2264.robot.util.DoubleMotor;
 
 import edu.wpi.first.wpilibj.CANTalon;
@@ -8,17 +9,23 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 public class Robot extends IterativeRobot {
-	private Joystick joystick;
-	private RobotDrive drive;
+	private RobotDrive driveTrain;
+	private Control joystick;
 	
     public void robotInit() {
-    	this.joystick = new Joystick(0);
-    	this.drive = new RobotDrive(
-    		new DoubleMotor(new CANTalon(19), new CANTalon(18)),
-    		new DoubleMotor(new CANTalon(20), new CANTalon(17))
+    	this.driveTrain = new RobotDrive(
+    		new DoubleMotor(
+	    		new CANTalon(RobotParts.MOTORS.LEFT_FRONT),	
+	    		new CANTalon(RobotParts.MOTORS.LEFT_REAR)
+	    	),
+    		new DoubleMotor(
+	    		new CANTalon(RobotParts.MOTORS.RIGHT_FRONT),
+	    		new CANTalon(RobotParts.MOTORS.RIGHT_REAR)
+	    	)
     	);
+    	this.joystick = new Control();
     }
     public void teleopPeriodic() {
-    	this.drive.arcadeDrive(this.joystick);
+    	 this.joystick.setDrive(this.driveTrain);
     }
 }
