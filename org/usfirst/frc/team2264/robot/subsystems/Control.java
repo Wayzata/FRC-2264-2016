@@ -22,9 +22,14 @@ public class Control {
 		double move = y * (z + 1.0) / 2.0;
 		double turn = x * (z + 1.0) / 2.0;
 	
-		
+		if (!this.joystick.getRawButton (1)){
+			move = move/2;
+			
+			
+		}
 		drive.arcadeDrive(move, turn);
 		
+
 	}
 
 }
