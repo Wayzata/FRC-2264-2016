@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Control {
 	private Joystick joystick;
+	private final double DIVIDER = 1.0;
 
 	
 	public Control(){
@@ -19,8 +20,8 @@ public class Control {
 		double twist = this.joystick.getTwist();
 		
 			
-		double move = y * (z + 1.0) / 2.0;
-		double turn = x * (z + 1.0) / 2.0;
+		double move = y * (z + 1.0) / DIVIDER;
+		double turn = x * (z + 1.0) / DIVIDER;
 	
 		if (!this.joystick.getRawButton (1)){
 			move = move/2;

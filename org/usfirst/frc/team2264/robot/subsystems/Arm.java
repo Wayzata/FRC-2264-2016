@@ -15,6 +15,7 @@ public class Arm {
 		this.slideMotor = new CANTalon(slideMotorID);
 		this.extendSwitch = new DigitalInput(extendSwitchID);
 		this.retractSwitch = new DigitalInput(retractSwitchID);
+		
 
 	}
 
