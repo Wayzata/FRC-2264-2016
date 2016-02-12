@@ -6,7 +6,7 @@ public class RobotParts {
 		public static final int LEFT_REAR = 20;
 		public static final int RIGHT_FRONT = 18;
 		public static final int RIGHT_REAR = 19;
-		public static final int SLIDE = 26;
+		public static final int SLIDE_MOTOR = 26;
 		
 		public static final int SHOULDER = 24;
 		public static final int ELBOW = 25;
@@ -18,5 +18,13 @@ public class RobotParts {
 	public static class SWITCHES {
 		public static final int EXETEND = 0;
 		public static final int RETRACT = 1;
+	}
+	
+	public static class PID_CONTROLLERS {
+		public static final int SHOULDER = 24;
+		public static final int ELBOW = 25;
+		public static final double Kp = 1;
+		public static final double Ki = 0;
+		public static final double Kd = 0;
 	}
 }

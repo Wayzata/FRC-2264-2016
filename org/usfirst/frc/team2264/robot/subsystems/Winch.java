@@ -3,7 +3,7 @@ package org.usfirst.frc.team2264.robot.subsystems;
 import edu.wpi.first.wpilibj.CANTalon;
 
 /**
- * @author Drake and Kushal :(
+ * @author Drake and Kushal :">
  */
 public class Winch {
 	CANTalon winder;
@@ -38,7 +38,7 @@ public class Winch {
 		if(this.winder.get() > 0){
 			this.movingTime += elapsedTime;
 		}
-		else if (this.winder.get() <0){
+		else if (this.winder.get() < 0){
 			this.movingTime -= elapsedTime;
 		}
 		

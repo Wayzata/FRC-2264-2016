@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  * @author Preeti and Gwyneth
  */
+
+//sets the front and rear motor and sets them to front and rear respectively
 public class DoubleMotor implements SpeedController {
 	CANTalon front;
 	CANTalon rear;
@@ -34,24 +36,25 @@ public class DoubleMotor implements SpeedController {
 		this.rear.set(speed, syncGroup);
 		SmartDashboard.putNumber("set()", speed);
 	}
-
+	//@Override = changes made to a class in small increments 
+	//sets the front and rear motors to the same speed
 	@Override
 	public void set(double speed) {
 		this.front.set(speed);
 		this.rear.set(speed);
 	}
-
+	//if the motors are inverted they will still go the same speed
 	@Override
 	public void setInverted(boolean isInverted) {
 		this.front.setInverted(isInverted);
 		this.rear.setInverted(isInverted);
 	}
-
+	//gets the return from the front motor and only front because both motors are the same speed
 	@Override
 	public boolean getInverted() {
 		return this.front.getInverted();
 	}
-
+	//This disables the motors
 	@Override
 	public void disable() {
 		this.front.disable();
