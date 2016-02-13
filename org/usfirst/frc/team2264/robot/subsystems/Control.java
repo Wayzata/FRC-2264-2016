@@ -16,6 +16,7 @@ public class Control {
 	public Control(){
 		this.joystick = new Joystick(0);
 		this.gamepad = new Joystick(1);
+		
 }
 	//gets the axis of the joystick (x, y, and z values)
 	public void applyToDrive(RobotDrive drive){
@@ -24,7 +25,7 @@ public class Control {
 		double z = this.joystick.getZ();
 		double twist = this.joystick.getTwist();
 		
-			//setting the speed of the moving and turning of the robot!
+		//setting the speed of the moving and turning of the robot!
 		double move = y * (z + 1.0) / DIVIDER;
 		double turn = x * (z + 1.0) / DIVIDER;
 	
@@ -42,10 +43,23 @@ public class Control {
 		double Rx = this.gamepad.getRawAxis(4);
 		double Ly = this.gamepad.getRawAxis(1);
 		double Ry = this.gamepad.getRawAxis(5);
-				
-		if (this.joystick.getRawButton(4));{
-			
+		int pov = this.gamepad.getPOV(0);
+		//for mapping pov to the top of the dpad
+		if ((this.gamepad.getPOV(0) < 90) || (this.gamepad.getPOV(0) > 270)){
+			arm.slideMotor.set(.5);
+		}else if ((this.gamepad.getPOV(0) > 90) && (this.gamepad.getPOV(0) < 270)){
+			arm.slideMotor.set(-.5);	
+		}else{ 
+			arm.slideMotor.set(0);
 		}
+		//safety switches
+		//TODO
+		//elbow and shoulder (trig?)
+		//TODO
 		
+		}
 	}
-}
+
+
+
+

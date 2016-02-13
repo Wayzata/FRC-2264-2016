@@ -42,6 +42,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	 this.joystick.applyToDrive(this.driveTrain);
     	 this.vision.sendFrame();
+    	 this.joystick.applyToArm(this.arm);
+    	 
     	 
     	 
     }

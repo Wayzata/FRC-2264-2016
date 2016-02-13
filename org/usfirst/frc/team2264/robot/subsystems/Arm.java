@@ -14,26 +14,27 @@ public class Arm {
 	CANTalon slideMotor;
 	DigitalInput extendSwitch;
 	DigitalInput retractSwitch;
-	double shoulderGoalAngle = 0.0;
-	double elbowGoalAngle = 0.0;
+	
 	
 	//bottom of the arm
 	CANTalon shoulderMotor;
 	CANTalon elbowMotor;
+	double shoulderGoalAngle = 0.0;
+	double elbowGoalAngle = 0.0;
 	
 	Joystick joystick;
 	
 	//Initializing and setting the values for the slideMotor and extend/retract Switch
-	
 	public Arm(CANTalon slideMotor, CANTalon elbowMotor, CANTalon shoulderMotor, DigitalInput extendSwitch,
 			DigitalInput retractSwitch) {
 		// TODO Auto-generated constructor stub
 		this.shoulderMotor.changeControlMode(TalonControlMode.Position);
 		this.shoulderMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 		this.shoulderMotor.setPID(1, 0, 0);
+		
 		this.elbowMotor.changeControlMode(TalonControlMode.Position);
 		this.elbowMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-		this.shoulderMotor.setPID(1, 0, 0);
+		this.elbowMotor.setPID(1, 0, 0);
 	}
 	//Extending the Forearm and tells when the switch is triggered and when to stop extending
 	public void extendForearm(){
@@ -57,7 +58,25 @@ public class Arm {
 		this.slideMotor.set(0);
 	}
 	
-//moving halfTilt motor
+	public void elbowMotor(){
+		// to move elbow up or down depending on angle
+		this.elbowMotor.setSetpoint(elbowGoalAngle);
+	}
+	
+	public void shoulderMotor(){
+		// to move down and up depending of the angle
+			this.shoulderMotor.setSetpoint(shoulderGoalAngle);
+		}
+	
+	public void safety(){ //not quite sure
+		//if (this.elbowMotor.pidWrite(output)){
+		this.elbowMotor.set(0);
+	//	}
+		//if (this.shoulderMotor.pidWrite(output)){
+			this.shoulderMotor.set(0);
+		}
+	}
+/**moving halfTilt motor
 	public void elbowDown(){
 		this.elbowMotor.set(-.5);
 	}
@@ -68,7 +87,7 @@ public class Arm {
 		this.elbowMotor.set(0);
 	}
 	
-	//moving wholeTilt motor
+	moving wholeTilt motor
 	public void shoulderDown(){
 		this.shoulderMotor.set(-.5);
 	}
@@ -78,4 +97,5 @@ public class Arm {
 	public void shoulderStop(){
 		this.shoulderMotor.set(0);
 	}
-}
+	**/
+//}

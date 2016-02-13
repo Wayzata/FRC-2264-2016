@@ -71,7 +71,7 @@ import org.usfirst.frc.team2264.robot.RobotParts;
 	 */
  	public boolean shoot() {
 
-		this.mainMotor.set(1);
+		this.mainMotor.set(.5);
 
  		// TODO
  		return false;
